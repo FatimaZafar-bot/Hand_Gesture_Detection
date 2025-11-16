@@ -4,18 +4,15 @@ import shutil
 SOURCE = r"C:\Users\Hp\Desktop\HandGesture\leapGestRecog"
 TARGET = r"C:\Users\Hp\Desktop\HandGesture\final_dataset"
 
-# Gesture class names
 gesture_classes = [
     "01_palm", "02_I", "03_fist", "04_fist_moved", "05_thumb",
     "06_index", "07_ok", "08_palm_moved", "09_c", "10_down"
 ]
 
-# Create target gesture folders
 os.makedirs(TARGET, exist_ok=True)
 for g in gesture_classes:
     os.makedirs(os.path.join(TARGET, g), exist_ok=True)
 
-# Loop through user folders (00, 01, 02,...)
 for user in os.listdir(SOURCE):
     user_path = os.path.join(SOURCE, user)
 
@@ -24,7 +21,6 @@ for user in os.listdir(SOURCE):
 
     print("Processing user:", user)
 
-    # Copy gesture images
     for gesture in gesture_classes:
         src = os.path.join(user_path, gesture)
         dst = os.path.join(TARGET, gesture)
