@@ -6,17 +6,15 @@ from tensorflow.keras.models import Sequential
 from tensorflow.keras.layers import Conv2D, MaxPooling2D, Flatten, Dense, Dropout
 from tensorflow.keras.callbacks import ModelCheckpoint
 
-# === PATHS ===
 DATASET_PATH = r"C:\Users\Hp\Desktop\HandGesture\final_dataset"
 MODEL_PATH = r"C:\Users\Hp\Desktop\HandGesture\hand_gesture_model.h5"
 LABELS_PATH = r"C:\Users\Hp\Desktop\HandGesture\gesture_labels.json"
 
-# === IMAGE PARAMETERS ===
+
 IMG_WIDTH, IMG_HEIGHT = 64, 64
 BATCH_SIZE = 32
 EPOCHS = 20
 
-# === DATA AUGMENTATION ===
 datagen = ImageDataGenerator(
     rescale=1./255,
     validation_split=0.2,
@@ -39,11 +37,11 @@ val_gen = datagen.flow_from_directory(
     subset='validation'
 )
 
-# === SAVE LABELS ===
 with open(LABELS_PATH, 'w') as f:
     json.dump(train_gen.class_indices, f)
 
-# === CNN MODEL ===
+
+
 model = Sequential([
     Conv2D(32, (3,3), activation='relu', input_shape=(IMG_WIDTH, IMG_HEIGHT, 3)),
     MaxPooling2D(2,2),
