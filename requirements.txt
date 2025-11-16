@@ -1,0 +1,7 @@
+tensorflow==2.18.0
+mediapipe==0.10.21
+#protobuf==3.20.3
+opencv-python
+numpy
+matplotlib
+scikit-learn
