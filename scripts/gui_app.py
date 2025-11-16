@@ -6,17 +6,15 @@ import numpy as np
 import json
 from tensorflow.keras.models import load_model
 
-# === Paths ===
+
 MODEL_PATH = r"C:\Users\Hp\Desktop\HandGesture\hand_gesture_model.h5"
 LABELS_PATH = r"C:\Users\Hp\Desktop\HandGesture\gesture_labels.json"
 
-# === Load model and labels ===
 model = load_model(MODEL_PATH)
 with open(LABELS_PATH, 'r') as f:
     class_indices = json.load(f)
 inv_class_indices = {v: k for k, v in class_indices.items()}
 
-# === GUI App ===
 class HandGestureApp:
     def __init__(self, window):
         self.window = window
@@ -24,7 +22,6 @@ class HandGestureApp:
         self.window.geometry("800x600")
         self.running = False
 
-        # Video label
         self.video_label = Label(window)
         self.video_label.pack()
 
@@ -32,7 +29,6 @@ class HandGestureApp:
         self.gesture_label = Label(window, text="Gesture: None", font=("Helvetica", 20))
         self.gesture_label.pack(pady=20)
 
-        # Buttons
         self.start_btn = Button(window, text="Start", command=self.start)
         self.start_btn.pack(side="left", padx=20)
 
